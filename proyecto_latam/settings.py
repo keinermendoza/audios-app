@@ -24,16 +24,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h)z3=s!_)7oks9z9(^)z7=66zqsoofy+b6e#bei#zipnb!1bne' 
+SECRET_KEY = config('SECRET_KEY', default="insecure") 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
-
+if DEBUG:
+    ALLOWED_HOSTS = []
+    CSRF_TRUSTED_ORIGINS = []
+else:
+    ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
+    CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', cast=lambda v: [s.strip() for s in v.split(',')])
 
 # Application definition
-
 INSTALLED_APPS = [
     'jazzmin',
     'cloudinary',
@@ -88,7 +91,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-#Conectar Cloudiary
+
+# REQUERIDO Cloudiary
 cloudinary.config( 
     cloud_name = config('CLOUDINARY_CLOUD_NAME'), 
     api_key = config('CLOUDINARY_API_KEY'), 
@@ -117,9 +121,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'es-eu'
+LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Manaus'
 
 USE_I18N = True
 
@@ -138,6 +142,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+ADMIN_SITE_URL = config('ADMIN_SITE_URL', default="admin/") 
 
 # -----------------------------
 # JAZZMIN CONFIG (opcional)

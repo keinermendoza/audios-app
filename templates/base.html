@@ -12,25 +12,25 @@
     <title>Keiner Mendoza - {% block title %}{% endblock title %}</title>
 
     <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
-    <link rel="canonical" href="https://audios.keinermendoza.com/">
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}">
     <meta name="title" content="App de audios personalizada por Keiner Mendoza. Desarrollador Web">
     <meta name="description" content="Escucha audios libres de copyright ideales para tus creaciones"> 
     <meta property="og:title" content="App de audios personalizada por Keiner Mendoza. Desarrollador Web">
     <meta property="og:description" content="Escucha audios libres de copyright ideales para tus creaciones">
     <meta property="og:site_name" content="keiner-mendoza-web-developer">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://audios.keinermendoza.com/">
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
     <meta charset="UTF-8">
     <meta name="author" description="keiner mendoza" >
-    <meta property="og:image" content="" />
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'audios/images/audios-app-preview.png' %}">
+
     
     <meta name="twitter:title" content="Escucha audios libres de copyright ideales para tus creaciones">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://audios.keinermendoza.com/">
+    <meta property="twitter:url" content="{{ request.scheme }}://{{ request.get_host }}">
     <meta property="twitter:title" content="App de audios personalizada por Keiner Mendoza. Desarrollador Web.">
     <meta property="twitter:description" content="Escucha audios libres de copyright ideales para tus creaciones">
-    <meta property="twitter:image" content="https://objectstorage.us-ashburn-1.oraclecloud.com/n/id8ztu6vhbyl/b/public-keiner-homesite/o/my-site-hero.png">
-
+    <meta property="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'audios/images/audios-app-preview.png' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    
