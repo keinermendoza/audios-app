@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Keiner Mendoza - {% block title %}{% endblock title %}</title>
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+    <link rel="canonical" href="https://audios.keinermendoza.com/">
+    <meta name="title" content="App de audios personalizada por Keiner Mendoza. Desarrollador Web">
+    <meta name="description" content="Escucha audios libres de copyright ideales para tus creaciones"> 
+    <meta property="og:title" content="App de audios personalizada por Keiner Mendoza. Desarrollador Web">
+    <meta property="og:description" content="Escucha audios libres de copyright ideales para tus creaciones">
+    <meta property="og:site_name" content="keiner-mendoza-web-developer">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://audios.keinermendoza.com/">
+    <meta charset="UTF-8">
+    <meta name="author" description="keiner mendoza" >
+    <meta property="og:image" content="" />
+    
+    <meta name="twitter:title" content="Escucha audios libres de copyright ideales para tus creaciones">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://audios.keinermendoza.com/">
+    <meta property="twitter:title" content="App de audios personalizada por Keiner Mendoza. Desarrollador Web.">
+    <meta property="twitter:description" content="Escucha audios libres de copyright ideales para tus creaciones">
+    <meta property="twitter:image" content="https://objectstorage.us-ashburn-1.oraclecloud.com/n/id8ztu6vhbyl/b/public-keiner-homesite/o/my-site-hero.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16x16.png' %}">
+    <link rel="icon" href="{% static 'icons/favicon.ico' %}" type="image/x-icon" />
+    <link rel="manifest" href="{% static 'icons/site.webmanifest' %}">
+
+    {% block meta %}{% endblock meta %}
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <styles>
+    
+    </styles>
+
+    <link rel="stylesheet" href="{% static 'audios/css/base.css' %}">
+
+    {% block styles %}{% endblock styles %}
+</head>
+<body>
+    <main class="mx-auto min-h-screen max-w-6xl p-4">{% block content %}{% endblock content %}</main>
+    {% block scripts %}{% endblock scripts %}
+</body>
+</html>
