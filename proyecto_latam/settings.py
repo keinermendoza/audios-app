@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import os
+from os import getenv
 import cloudinary
-from decouple import config
+# from decouple import config
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,17 +26,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default="insecure") 
+SECRET_KEY = getenv('SECRET_KEY', "insecure") 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = bool(getenv('DEBUG', '0'))
 
 if DEBUG:
     ALLOWED_HOSTS = []
     CSRF_TRUSTED_ORIGINS = []
 else:
-    ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
-    CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', cast=lambda v: [s.strip() for s in v.split(',')])
+    ALLOWED_HOSTS = getenv('ALLOWED_HOSTS').split(' ')
+    CSRF_TRUSTED_ORIGINS = getenv('CSRF_TRUSTED_ORIGINS').split(' ')
 
 # Application definition
 INSTALLED_APPS = [
@@ -94,9 +96,9 @@ DATABASES = {
 
 # REQUERIDO Cloudiary
 cloudinary.config( 
-    cloud_name = config('CLOUDINARY_CLOUD_NAME'), 
-    api_key = config('CLOUDINARY_API_KEY'), 
-    api_secret = config('CLOUDINARY_API_SECRET') 
+    cloud_name = getenv('CLOUDINARY_CLOUD_NAME'), 
+    api_key = getenv('CLOUDINARY_API_KEY'), 
+    api_secret = getenv('CLOUDINARY_API_SECRET') 
 )
 
 # Password validation
@@ -142,7 +144,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ADMIN_SITE_URL = config('ADMIN_SITE_URL', default="admin/") 
+ADMIN_SITE_URL = getenv('ADMIN_SITE_URL', "admin/") 
 
 # -----------------------------
 # JAZZMIN CONFIG (opcional)
