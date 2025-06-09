@@ -31,6 +31,8 @@ SECRET_KEY = getenv('SECRET_KEY', "insecure")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(getenv('DEBUG', '0')))
 
+AUTH_USER_MODEL = "custom_auth.CustomUser"
+
 if DEBUG:
     ALLOWED_HOSTS = []
     CSRF_TRUSTED_ORIGINS = []
@@ -142,6 +144,9 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = 'media/'
 
 STATIC_ROOT = "staticfiles"
 # Default primary key field type
