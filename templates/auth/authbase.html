@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<style>
+.auth-input-group label {
+    display:block;
+}
+.auth-input-group > div {
+    margin-block: 0.75rem;
+}
+input {
+    width: 100%;
+    padding: 0.35rem 0.5rem;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 0.225rem;
+}
+.errorlist {
+    color:red;
+    list-style: disc;
+    margin-left: 1.5rem;
+    font-style: italic;
+    margin-block: 0.5rem;
+}
+.errorlist li {
+    max-width: 40ch;
+}
+</style>
+{% endblock styles %}
+
+{% block content %}
+<div class="fixed top-0 left-0 z-0 w-screen h-screen bg-slate-800/80"></div>
+<section class="relative z-10 w-full min-h-[calc(100vh-2.5rem)]  grid place-content-center">
+    <div class="p-6 md:p-8 bg-white rounded-xl shadow-lg">
+        {% block authcard %}
+        {% endblock authcard %}
+    </div>
+</section>
+{% endblock content %}

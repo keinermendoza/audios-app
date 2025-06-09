@@ -1,0 +1,27 @@
+{% extends "auth/authbase.html" %}
+
+{% block title %}Crear Cuenta{% endblock title %}
+
+{% block scripts %}
+{{ form.media }}
+{% endblock scripts %} ]
+
+
+{% block authcard %}
+<form method="post" action="">
+    <div class="mb-6 text-center">
+        <h1 class="text-3xl font-semibold">Crear Cuenta</h1>
+        <p class="italic mt-2 text-lg">Nos alegra que quieras abrir una cuenta gratuita</p>
+        <p class="italic text-lg">Proporciona tus datos a continuación</p>
+    </div>
+    {% csrf_token %}
+    
+    <div class="auth-input-group">
+        {{form}}
+    </div>
+
+    <div class="mt-8 flex justify-end items-center">
+        {% include "partials/button.html" with text="Registrar" %}
+    </div>
+</form>
+{% endblock authcard %}

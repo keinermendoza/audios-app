@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<style>
+body {
+    background: oklch(95.1% 0.026 236.824);
+}
+</style>
+{% endblock styles %}
+
+{% block content %}
+<section class="my-4">
+    <h1 class="text-3xl">Perfil</h1>
+    <p class="text-lg mt-2">Hola {{request.user.username}}, Un gusto verte por aquí</p>
+
+    <p>Aqui puedes <a class="text-blue-500 underline underline-offset-2" href="">completar tu perfil</a></p>
+</section>
+<section class="my-4">
+    <p class="italic mb-2">Si lo deseas puedes quedarte el tiempo que quieras</p>
+    <form action="{% url 'custom_auth:logout' %}" method="post" class="block text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">
+        {% csrf_token %}
+        {% include "partials/button.html" with text="Salir" %}
+    </form>
+</section>
+{% endblock content %}

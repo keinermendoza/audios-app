@@ -3,12 +3,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!DOCTYPE html>
-<html lang="es">
-<head>
     <title>Keiner Mendoza - {% block title %}{% endblock title %}</title>
 
     <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
@@ -43,16 +37,14 @@
 
     {% block meta %}{% endblock meta %}
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <styles>
-    
-    </styles>
-
     <link rel="stylesheet" href="{% static 'audios/css/base.css' %}">
 
     {% block styles %}{% endblock styles %}
 </head>
 <body>
-    <main class="mx-auto min-h-screen max-w-6xl p-4">{% block content %}{% endblock content %}</main>
+    {% include "partials/navbar.html" %}
+    <main class="mb-20 mb:mb-0 mx-auto min-h-screen max-w-6xl p-4">{% block content %}{% endblock content %}</main>
+    {% include "partials/mobile_navbar.html" %}
     {% block scripts %}{% endblock scripts %}
 </body>
 </html>

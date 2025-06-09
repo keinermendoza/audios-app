@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+from django.urls import reverse_lazy
 from pathlib import Path
 from os import getenv
 import cloudinary
@@ -51,7 +51,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'audios',
-    'import_export'
+    'import_export',
+    'custom_auth.apps.AuthConfig',
+    'mywidgets', # widgets personalizados
 ]
 
 MIDDLEWARE = [
@@ -159,3 +161,6 @@ JAZZMIN_SETTINGS = {
     "site_logo": "icons/android-chrome-192x192.png",
     "welcome_sign": "Bienvenido al panel de Audio Plays App",
 }
+
+LOGIN_REDIRECT_URL = reverse_lazy("custom_auth:dashboard")
+LOGOUT_REDIRECT_URL = reverse_lazy("audios:inicio")
