@@ -9,15 +9,21 @@ body {
 {% endblock styles %}
 
 {% block content %}
-<section class="my-4">
-    <h1 class="text-3xl">Perfil</h1>
-    <p class="text-lg mt-2">Hola {{request.user.username}}, Un gusto verte por aquí</p>
 
-    <p>Aqui puedes <a class="text-blue-500 underline underline-offset-2" 
-    href="{% url 'custom_auth:profile_edit' %}">completar tu perfil</a></p>
+<section class="my-4 text-center mx-auto w-full max-w-xl p-6 md:p-8 bg-gray-100 rounded-xl shadow-lg">
+    <h1 class="text-4xl font-semibold text-start mb-4">Perfil</h1>
+    <img class="mx-auto object-cover w-full  max-w-80 aspect-square rounded-full" src="{{request.user.profile_image}}" alt="Imagen de perfil">
+    <p class="mt-6 text-2xl font-medium"><span>{{user.nombre|default:"Nombre"}}</span> <span>{{user.apellido|default:"Apellido"}}</span></p>
+    <p class="text-sm mt-2 text-black/60">tlf: {{user.telefono|default:"numero de telefono"}}</p>
+    <p class="mt-2 text-black/60">@{{user.username}}</p>
 </section>
-<section class="my-4">
-    <p class="italic mb-2">Si lo deseas puedes quedarte el tiempo que quieras</p>
+
+
+<section class="mt-12 md:mt-16 space-y-2">
+    <p class="text-sm md:text-base">Deseas editar tu perfil?  <a class="text-blue-500 underline underline-offset-2" 
+        href="{% url 'custom_auth:profile_edit' %}">puedes editar tu perfil aquí</a></p>
+    <p class="italic text-sm md:text-base">Si lo deseas puedes quedarte el tiempo que quieras</p>
+    
     <form action="{% url 'custom_auth:logout' %}" method="post" class="block text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">
         {% csrf_token %}
         {% include "partials/button.html" with text="Salir" %}
